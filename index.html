@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer"> <!-- ЭТО РЕШИТ ПРОБЛЕМУ С ФОТО -->
+    <title>Для моей любимой ❤️</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #fff5f8; margin: 0; overflow-x: hidden; text-align: center; color: #d63384; }
+        .screen { display: none; min-height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+        .active { display: flex; animation: fadeIn 0.8s ease-in; }
+        
+        h1 { font-size: 2em; margin: 15px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.05); }
+        p { font-size: 1.1em; color: #555; line-height: 1.5; max-width: 450px; background: rgba(255,255,255,0.8); padding: 15px; border-radius: 15px; }
+        
+        .reasons-list { text-align: left; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 100%; margin: 15px 0; }
+        .reason-item { margin: 10px 0; font-size: 1.1em; display: flex; align-items: center; gap: 10px; }
+
+        .main-photo { width: 80%; max-width: 280px; border: 8px solid white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 15px; height: 350px; object-fit: cover; }
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+        .photo-grid img { width: 100%; height: 150px; object-fit: cover; border: 5px solid white; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        button { background: #ff4d6d; color: white; border: none; padding: 15px 25px; font-size: 1.1em; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+        #noBtn { background: #999; position: absolute; }
+
+        .dates { background: rgba(255,255,255,0.9); padding: 15px; border-radius: 20px; width: 100%; max-width: 350px; }
+        .date-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ffccd5; }
+        input[type="tel"] { padding: 12px; border-radius: 25px; border: 2px solid #ff4d6d; width: 200px; text-align: center; margin: 10px 0; outline: none; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .heart { position: fixed; color: #ff4d6d; pointer-events: none; animation: float 3s linear forwards; z-index: 100; }
+        @keyframes float { to { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="s1" class="screen active">
+        <h1>Привет! ❤️<br>Хочешь открыть валентинку?</h1>
+        <div style="position: relative; height: 60px; width: 100%;">
+            <button onclick="next(1, 2)">Да, конечно! ✨</button>
+            <button id="noBtn" onmouseover="moveButton()">Нет :(</button>
+        </div>
+    </div>
+
+    <!-- СЛАЙД 2: ФОТО 11 (Главное) -->
+    <div id="s2" class="screen">
+        <img src="https://images2.imgbox.com" class="main-photo">
+        <h1>Мои чувства к тебе...</h1>
+        <p>Ты — самое лучшее, что со мной случалось. Каждая минута с тобой бесценна! ❤️</p>
+        <button onclick="next(2, 3)">Почему я тебя люблю? ✨</button>
+    </div>
+
+    <div id="s3" class="screen">
+        <h1>За что я тебя люблю ❤️</h1>
+        <div class="reasons-list">
+            <div class="reason-item">🌟 За твою невероятную улыбку</div>
+            <div class="reason-item">🫂 За то, как ты меня обнимаешь</div>
+            <div class="reason-item">🌸 За твою доброту и поддержку</div>
+            <div class="reason-item">🔥 За то, что ты — это ты</div>
+            <div class="reason-item">💖 Просто за то, что ты есть</div>
+        </div>
+        <button onclick="next(3, 4)">Наш альбом! 📸</button>
+    </div>
+
+    <!-- СЛАЙД 4: АЛЬБОМ (3, 6, 7, 8, 9, 10, 12, 13) -->
+    <div id="s4" class="screen">
+        <h1>Наши моменты 📸</h1>
+        <div class="photo-grid">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+            <img src="https://images2.imgbox.com">
+        </div>
+        <button onclick="next(4, 5)">Показать тебя и софбина? ✨</button>
+    </div>
+
+    <!-- СЛАЙД 5: ДАТЫ (4 и 5) -->
+    <div id="s5" class="screen">
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <img src="https://images2.imgbox.com" style="width: 140px; height: 140px; object-fit: cover; border-radius: 10px; border: 3px solid white;">
+            <img src="https://images2.imgbox.com" style="width: 140px; height: 140px; object-fit: cover; border-radius: 10px; border: 3px solid white;">
+        </div>
+        <h1>Наши даты 🗓️</h1>
+        <div class="dates">
+            <div class="date-item"><span>💖 9 месяцев</span> <strong>Скоро!</strong></div>
+            <div class="date-item"><span>🌹 8 марта</span> <strong>Твой день</strong></div>
+            <div class="date-item"><span>🎂 1 год</span> <strong>Главная дата</strong></div>
+        </div>
+        <button onclick="next(5, 6)">Напоследок... 😏</button>
+    </div>
+
+    <!-- СЛАЙД 6: ФИНАЛ (1 и 2) -->
+    <div id="s6" class="screen">
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <img src="https://images2.imgbox.com" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
+            <img src="https://images2.imgbox.com" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
+        </div>
+        <h1>Номерок то свой оставишь? 😏</h1>
+        <input type="tel" placeholder="+7 (___) ___-__-__">
+        <br>
+        <button onclick="alert('Записал! 😉'); location.reload()" style="background: #333; font-size: 0.8em; margin-top:10px;">Заново</button>
+    </div>
+
+    <script>
+        function next(curr, nxt) {
+            document.getElementById('s' + curr).style.display = 'none';
+            document.getElementById('s' + nxt).style.display = 'flex';
+            document.getElementById('s' + nxt).classList.add('active');
+            startHearts();
+        }
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            btn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            btn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        }
+        function startHearts() {
+            for(let i=0; i<15; i++) {
+                setTimeout(() => {
+                    const h = document.createElement('div');
+                    h.innerHTML = '❤️'; h.className = 'heart';
+                    h.style.left = Math.random() * 100 + 'vw';
+                    h.style.bottom = '-5vh';
+                    document.body.appendChild(h);
+                    setTimeout(() => h.remove(), 3000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
